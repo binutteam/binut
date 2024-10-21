@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<br>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Pronto para Binutizar?</h2>
+            <label>
+                <span>Email</span>
+                <input type="email" />
+            </label>
+            <label>
+                <span>Senha</span>
+                <input type="password"/>
+            </label>
+            <p class="forgot-pass">Esqueceu a senha?</p>
+            <button type="button" class="submit">Cadastro</button>
+         
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                 
+                    <h3>Não tem uma conta ainda?<h3>
+                </div>
+                <div class="img__text m--in">
+                
+                    <h3>Já tem uma conta? Legal, então é só logar!<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Cadastro</span>
+                    <span class="m--in">Login</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>Vamos criar sua conta!</h2>
+                <label>
+                    <span>Nome</span>
+                    <input type="text" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" />
+                </label>
+                <label>
+                    <span>Senha</span>
+                    <input type="password" />
+                </label>
+                <button type="button" class="submit">Cadastrar</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function() {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    </script>

@@ -1,0 +1,146 @@
+/* Estilos Globais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-color: #2a6b2f;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+/* Estilo das Seções */
+.section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.section.bg-light {
+    background-color: #ffffff;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.text {
+    flex: 1;
+    padding: 20px;
+}
+
+.text h2 {
+    color: #2a6b2f;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.text p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.image img {
+    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo da Equipe */
+.equipe-membros {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 1000px;
+}
+
+.membro {
+    text-align: center;
+    width: 200px;
+    margin: 20px;
+}
+
+.membro img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.membro h3 {
+    font-size: 1.4em;
+    margin: 10px 0;
+}
+
+/* Estilizar o Rodapé */
+footer{
+    background: #161616;
+    padding: 20px 23px;
+    color: #fff;
+    text-align: center;
+}
+
+footer span{
+    color: #00804b;
+    font-weight: 600;
+}
+
+footer span:hover{
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .equipe-membros {
+        justify-content: center;
+    }
+
+    .membro {
+        width: 100%;
+    }
+
+    .membro img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+.equipe-img {
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transição suave */
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Opções de Consulta</title>
+    <link rel="stylesheet" href="consulta.css">
+</head>
+<button id="backButton">Voltar</button>
+<body>
+    <div class="container" id="formContainer">
+        <h1>Selecione as opções da consulta</h1>
+        
+        <form action="#" method="POST">
+            <!-- Tipo de visita -->
+            <label for="tipo-visita">Tipo de visita *</label>
+            <select id="tipo-visita" name="tipo-visita">
+                <option value="consulta-nutricionista">Consulta nutricionista (Presencial) • R$ 300,00</option>
+                <option value="consulta-nutricionista">Consulta nutricionista (Semi-Presencial) • R$ 280,00</option>
+                <option value="consulta-nutricionista">Consulta nutricionista (Remoto) • R$ 230,00</option>
+            </select>
+            
+            <!-- Convênio médico -->
+            <label for="convenio-medico">Convênio médico *</label>
+            <select id="convenio-medico" name="convenio-medico" disabled>
+                <option value="nao-aceitamos">Não aceitamos convênio médico</option>
+            </select>
+            <p class="info-convenio">Este especialista não aceita nenhum convênio médico no local selecionado</p>
+
+
+            <!-- Primeira consulta -->
+            <label>É a sua primeira consulta com este especialista? *</label>
+            <div class="radio-group">
+                <label><input type="radio" name="primeira-consulta" value="sim" required> Sim</label>
+                <label><input type="radio" name="primeira-consulta" value="nao" required> Não</label>
+            </div>
+
+            <!-- Botão de continuar -->
+            <button type="submit">Continuar</button>
+
+            <p class="campo-obrigatorio">* Campo obrigatório</p>
+        </form>
+
+        <!-- Detalhes da consulta -->
+        <div class="detalhes-consulta">
+            <p><a href="#" id="mudarDataBtn">Mudar a data</a></p>
+            <p><a href="#" id="mudarNutriBtn">Mudar de nutricionista</a></p>
+        </div>
+    </div>
+
+    <!-- Tela de confirmação -->
+    <div class="container" id="confirmacaoContainer" style="display: none;">
+        <h1>Confirmação da Consulta</h1>
+        <p><strong>Data:</strong> <span id="confirmacaoData"></span></p>
+        <p><strong>Horário:</strong> <span id="confirmacaoHorario"></span></p>
+        <p><strong>Nutricionista:</strong> <span id="confirmacaoNutri"></span></p>
+        <button id="baixarInfoBtn">Baixar informações</button>
+    </div>
+
+    <!-- Modal para mudar data -->
+    <div id="modalMudarData" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeDataModal">&times;</span>
+            <h2>Selecione nova data e horário</h2>
+            <label for="nova-data">Data:</label>
+            <input type="date" id="nova-data" name="nova-data">
+            <label for="novo-horario">Horário:</label>
+            <input type="time" id="novo-horario" name="novo-horario">
+            <button id="confirmarDataBtn">Confirmar</button>
+        </div>
+    </div>
+
+    <!-- Modal para mudar nutricionista -->
+    <div id="modalMudarNutri" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeNutriModal">&times;</span>
+            <h2>Selecione outro nutricionista</h2>
+            <label for="nutricionista">Nutricionista:</label>
+            <select id="nutricionista">
+                <option value="Adva Ramos"> Adva Ramos da Costa</option>
+                <option value="Menezes Cruz">Menezes cruz Oulivadt</option>
+                <option value="Victoria Dantas">Victoria Dantas Machado</option>
+                <!-- Adicionar mais nutricionistas aqui -->
+            </select>
+            <button id="confirmarNutriBtn">Confirmar</button>
+        </div>
+    </div>
+
+    <script src="consulta.js"></script>
+</body>
+</html>
