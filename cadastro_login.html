@@ -1,58 +1,359 @@
 <!DOCTYPE html>
-<br>
-<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
-    <div class="cont">
-        <div class="form sign-in">
-            <h2>Pronto para Binutizar?</h2>
-            <label>
-                <span>Email</span>
-                <input type="email" />
-            </label>
-            <label>
-                <span>Senha</span>
-                <input type="password"/>
-            </label>
-            <p class="forgot-pass">Esqueceu a senha?</p>
-            <button type="button" class="submit">Cadastro</button>
-         
-        </div>
-        <div class="sub-cont">
-            <div class="img">
-                <div class="img__text m--up">
-                 
-                    <h3>Não tem uma conta ainda?<h3>
-                </div>
-                <div class="img__text m--in">
-                
-                    <h3>Já tem uma conta? Legal, então é só logar!<h3>
-                </div>
-                <div class="img__btn">
-                    <span class="m--up">Cadastro</span>
-                    <span class="m--in">Login</span>
-                </div>
-            </div>
-            <div class="form sign-up">
-                <h2>Vamos criar sua conta!</h2>
-                <label>
-                    <span>Nome</span>
-                    <input type="text" />
-                </label>
-                <label>
-                    <span>Email</span>
-                    <input type="email" />
-                </label>
-                <label>
-                    <span>Senha</span>
-                    <input type="password" />
-                </label>
-                <button type="button" class="submit">Cadastrar</button>
-                
-            </div>
-        </div>
-    </div>
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+   Cadastro
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(to right, #f0f4f8, #e8f0f4);
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+        }
+        .left-section {
+            background: #1a1a1a;
+            color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        .left-section .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .left-section h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .left-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: left;
+        }
+        .testimonial p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .testimonial .author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial .author img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .right-section {
+            background: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .right-section h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+        .form-group .privacy-policy {
+            display: flex;
+            align-items: center;
+        }
+        .form-group .privacy-policy label {
+            margin-left: 5px;
+            font-weight: 400;
+        }
+        .form-group .toggle-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-group .toggle-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-group .toggle-buttons button.active {
+            background: #000;
+            color: white;
+        }
+        .form-group .toggle-buttons button:not(:last-child) {
+            margin-right: 10px;
+        }
+        .form-group .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #318549;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .form-group .login-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-group .login-link a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-    <script>
-        document.querySelector('.img__btn').addEventListener('click', function() {
-            document.querySelector('.cont').classList.toggle('s--signup');
-        });
-    </script>
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left-section, .right-section {
+                border-radius: 0;
+                padding: 20px;
+            }
+            .left-section {
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .right-section {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="left-section">
+    <h1>
+     Saúde&Bem-estar caminhando juntos!
+    </h1>
+    <p>
+     Binut, uma plataforma desenvolvida para nutrcionistas e pessoas determinadas!
+    </p>
+    <div class="testimonial">
+     <p>
+        O Binut é uma iniciativa que começou em 2024, num projeto para a faculdade, apesar do nosso time pequeno, acredito que o Binut está sempre buscando trazer o melhorar para seus clientes.
+     </p>
+     <div class="author">
+      <img alt="Maria Castilho" height="56" src="mariaimaculada.jpeg" width="56
+      "/>
+      <div>
+       <strong>
+        Maria Castilho
+       </strong>
+       <br/>
+       Fundadora, time de desenvolvedores
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="right-section">
+    <h2>
+     Vamos criar uma conta?
+    </h2>
+    <div class="form-group">
+     <div class="toggle-buttons">
+      <button class="active">
+        Nutricionista
+      </button>
+      <button>
+       Cliente
+      </button>
+     </div>
+    </div>
+    <div class="form-group">
+     <input placeholder="Nome completo" type="text"/>
+    </div>
+    <div class="form-group">
+      <select>
+        <option>
+            Educação alimentar e nutricional
+       </option>
+       <option>
+         Gestão de políticas públicas e programas em alimentação e nutrição
+       </option>
+       <option>
+        Nutrição clínica
+</option>
+<option>
+        Nutrição clínica em cardiologia
+</option>
+<option>
+        Nutrição clínica em cuidados paliativos
+</option>
+<option>
+        Nutrição clínica em endocrinologia e metabologia
+</option>
+<option>
+        Nutrição clínica em gastroenterologia
+</option>
+<option>
+        Nutrição clínica em gerontologia
+</option>
+<option>
+        Nutrição clínica em nefrologia
+</option>
+<option>
+        Nutrição clínica em oncologia
+</option>
+<option>
+        Nutrição clínica em terapia intensiva
+</option>
+<option>
+        Nutrição de precisão
+</option>
+<option>
+        Nutrição e alimentos funcionais
+</option>
+<option>
+        Nutrição e fitoterapia
+</option>
+<option>
+        Nutrição em alimentação coletiva
+</option>
+<option>
+        Nutrição em alimentação coletiva hospitalar
+</option>
+<option>
+        Nutrição em alimentação escolar
+</option>
+<option>
+        Nutrição em atenção primária e saúde da família e comunidade
+</option>
+<option>
+        Nutrição em esportes e exercício físico
+</option>
+<option>
+        Nutrição em estética
+</option>
+<option>
+        Nutrição em marketing
+</option>
+<option>
+        Nutrição em saúde coletiva
+</option>
+<option>
+        Nutrição em saúde da mulher
+</option>
+<option>
+        Nutrição em saúde de povos e comunidades tradicionais
+</option>
+<option>
+        Nutrição em saúde indígena
+</option>
+<option>
+        Nutrição em saúde mental
+</option>
+<option>
+        Nutrição em transtornos alimentares
+</option>
+<option>
+        Nutrição em vegetarianismo e veganismo
+</option>
+<option>
+        Nutrição materno-infantil
+</option>
+<option>
+        Nutrição na produção de refeições comerciais
+</option>
+<option>
+        Nutrição na produção da tecnologia de alimentos e bebidas
+</option>
+<option>
+        Qualidade e segurança dos alimentos
+</option>
+<option>
+        Segurança alimentar e nutricional
+</option>
+<option>
+        Terapia de nutrição enteral e parenteral
+</option>
+     </select>
+    </div>
+    <div class="form-group">
+     <input placeholder="Email" type="email"/>
+    </div>
+    <div class="form-group">
+     <input placeholder="Senha" type="password"/>
+    </div>
+    <div class="form-group privacy-policy">
+     <input type="checkbox"/>
+     <label>
+      Eu concordo com
+      <a href="#">
+       Politica de privacidade&Termos de Serviço
+      </a>
+     </label>
+    </div>
+    <div class="form-group">
+     <button class="submit-button">
+      Crie uma conta
+     </button>
+    </div>
+    <div class="form-group login-link">
+     <p>
+      Já tem uma conta?
+      <a href="#">
+       Entre
+      </a>
+     </p>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
