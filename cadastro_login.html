@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html>
- <head>
-
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-   Cadastro
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
+    <title>Cadastro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+    <style>
+        body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             display: flex;
@@ -33,11 +30,7 @@
             padding: 20px;
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
-        }
-        .left-section .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            position: relative;
         }
         .left-section h1 {
             font-size: 36px;
@@ -97,7 +90,7 @@
             font-weight: 600;
         }
         .form-group input, .form-group select {
-            width: 100%;
+            width: 105%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -105,6 +98,13 @@
         }
         .form-group input[type="checkbox"] {
             width: auto;
+        }
+        .cliente{
+            width: 92%;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            align-self: center;
         }
         .form-group .privacy-policy {
             display: flex;
@@ -153,7 +153,6 @@
             text-decoration: none;
             font-weight: 600;
         }
-
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -162,205 +161,141 @@
                 border-radius: 0;
                 padding: 20px;
             }
-            .left-section {
-                border-top-left-radius: 20px;
-                border-top-right-radius: 20px;
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-            .right-section {
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-            }
+
+         .right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha o conteúdo no centro */
+}
+
         }
-  </style>
- </head>
- <body>
-  <div class="container">
-   <div class="left-section">
-    <h1>
-     Saúde&Bem-estar caminhando juntos!
-    </h1>
-    <p>
-     Binut, uma plataforma desenvolvida para nutrcionistas e pessoas determinadas!
-    </p>
-    <div class="testimonial">
-     <p>
-        O Binut é uma iniciativa que começou em 2024, num projeto para a faculdade, apesar do nosso time pequeno, acredito que o Binut está sempre buscando trazer o melhorar para seus clientes.
-     </p>
-     <div class="author">
-      <img alt="Maria Castilho" height="56" src="mariaimaculada.jpeg" width="56
-      "/>
-      <div>
-       <strong>
-        Maria Castilho
-       </strong>
-       <br/>
-       Fundadora, time de desenvolvedores
-      </div>
-     </div>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>Saúde & Bem-estar caminhando juntos!</h1>
+            <p>Binut, uma plataforma desenvolvida para nutricionistas e pessoas determinadas!</p>
+            <div class="testimonial">
+                <p>O Binut é uma iniciativa que começou em 2024, num projeto para a faculdade. Apesar do nosso time pequeno, acredito que o Binut está sempre buscando trazer o melhor para seus clientes.</p>
+                <div class="author">
+                    <img alt="Maria Castilho" src="mariaimaculada.jpeg"/>
+                    <div>
+                        <strong>Maria Castilho</strong><br/>
+                        Fundadora, time de desenvolvedores
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Vamos criar uma conta?</h2>
+            <div class="form-group">
+                <div class="toggle-buttons">
+                    <button class="active" onclick="showNutritionistaFields()">Nutricionista</button>
+                    <button onclick="showClienteFields()">Cliente</button>
+                </div>
+            </div>
+            <div class="nutricionista">
+                <div class="form-group">
+                    <input placeholder="Nome completo" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Nome de usuário" type="text"/>
+                </div>
+                <div class="form-group">
+                    <select>
+                        <option>Educação alimentar e nutricional</option>
+                        <option>Gestão de políticas públicas e programas em alimentação e nutrição</option>
+                        <option>Nutrição clínica</option>
+                        <option>Nutrição clínica em cardiologia</option>
+                        <option>Nutrição clínica em cuidados paliativos</option>
+                        <option>Nutrição clínica em endocrinologia e metabologia</option>
+                        <option>Nutrição clínica em gastroenterologia</option>
+                        <option>Nutrição clínica em gerontologia</option>
+                        <option>Nutrição clínica em nefrologia</option>
+                        <option>Nutrição clínica em oncologia</option>
+                        <option>Nutrição clínica em terapia intensiva</option>
+                        <option>Nutrição de precisão</option>
+                        <option>Nutrição e alimentos funcionais</option>
+                        <option>Nutrição e fitoterapia</option>
+                        <option>Nutrição em alimentação coletiva</option>
+                        <option>Nutrição em alimentação coletiva hospitalar</option>
+                        <option>Nutrição em alimentação escolar</option>
+                        <option>Nutrição em atenção primária e saúde da família e comunidade</option>
+                        <option>Nutrição em esportes e exercício físico</option>
+                        <option>Nutrição em estética</option>
+                        <option>Nutrição em marketing</option>
+                        <option>Nutrição em saúde coletiva</option>
+                        <option>Nutrição em saúde da mulher</option>
+                        <option>Nutrição em saúde de povos e comunidades tradicionais</option>
+                        <option>Nutrição em saúde indígena</option>
+                        <option>Nutrição em saúde mental</option>
+                        <option>Nutrição em transtornos alimentares</option>
+                        <option>Nutrição em vegetarianismo e veganismo</option>
+                        <option>Nutrição materno-infantil</option>
+                        <option>Nutrição na produção de refeições comerciais</option>
+                        <option>Nutrição na produção da tecnologia de alimentos e bebidas</option>
+                        <option>Qualidade e segurança dos alimentos</option>
+                        <option>Segurança alimentar e nutricional</option>
+                        <option>Terapia de nutrição enteral e parenteral</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Email" type="email"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="CNR-5 inscrição" type="number"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Senha" type="password"/>
+                </div>
+            </div>
+            <div class="cliente" style="display:none;">
+                <div class="form-group">
+                    <input placeholder="Nome completo" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Nome de usuário" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Email" type="email"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Senha" type="password"/>
+                </div>
+            </div>
+            <div class="form-group privacy-policy">
+                <input type="checkbox" id="privacy-policy"/>
+                <label for="privacy-policy">
+                    Eu concordo com
+                    <a href="politica_de_privacidade.html">Política de privacidade & Termos de Serviço</a>
+                </label>
+            </div>
+            <div class="form-group">
+                <button class="submit-button">Crie uma conta</button>
+            </div>
+            <div class="form-group login-link">
+                <p>Já tem uma conta? <a href="login_conta.html">Entre</a></p>
+            </div>
+        </div>
     </div>
-   </div>
-   <div class="right-section">
-    <h2>
-     Vamos criar uma conta?
-    </h2>
-    <div class="form-group">
-     <div class="toggle-buttons">
-      <button class="active">
-        Nutricionista
-      </button>
-      <button>
-       Cliente
-      </button>
-     </div>
-    </div>
-    <div class="form-group">
-     <input placeholder="Nome completo" type="text"/>
-    </div>
-    <div class="form-group">
-        <input placeholder="Nome de usúario" type="text"/>
-       </div>
-    <div class="form-group">
-      <select>
-        <option>
-            Educação alimentar e nutricional
-       </option>
-       <option>
-         Gestão de políticas públicas e programas em alimentação e nutrição
-       </option>
-       <option>
-        Nutrição clínica
-</option>
-<option>
-        Nutrição clínica em cardiologia
-</option>
-<option>
-        Nutrição clínica em cuidados paliativos
-</option>
-<option>
-        Nutrição clínica em endocrinologia e metabologia
-</option>
-<option>
-        Nutrição clínica em gastroenterologia
-</option>
-<option>
-        Nutrição clínica em gerontologia
-</option>
-<option>
-        Nutrição clínica em nefrologia
-</option>
-<option>
-        Nutrição clínica em oncologia
-</option>
-<option>
-        Nutrição clínica em terapia intensiva
-</option>
-<option>
-        Nutrição de precisão
-</option>
-<option>
-        Nutrição e alimentos funcionais
-</option>
-<option>
-        Nutrição e fitoterapia
-</option>
-<option>
-        Nutrição em alimentação coletiva
-</option>
-<option>
-        Nutrição em alimentação coletiva hospitalar
-</option>
-<option>
-        Nutrição em alimentação escolar
-</option>
-<option>
-        Nutrição em atenção primária e saúde da família e comunidade
-</option>
-<option>
-        Nutrição em esportes e exercício físico
-</option>
-<option>
-        Nutrição em estética
-</option>
-<option>
-        Nutrição em marketing
-</option>
-<option>
-        Nutrição em saúde coletiva
-</option>
-<option>
-        Nutrição em saúde da mulher
-</option>
-<option>
-        Nutrição em saúde de povos e comunidades tradicionais
-</option>
-<option>
-        Nutrição em saúde indígena
-</option>
-<option>
-        Nutrição em saúde mental
-</option>
-<option>
-        Nutrição em transtornos alimentares
-</option>
-<option>
-        Nutrição em vegetarianismo e veganismo
-</option>
-<option>
-        Nutrição materno-infantil
-</option>
-<option>
-        Nutrição na produção de refeições comerciais
-</option>
-<option>
-        Nutrição na produção da tecnologia de alimentos e bebidas
-</option>
-<option>
-        Qualidade e segurança dos alimentos
-</option>
-<option>
-        Segurança alimentar e nutricional
-</option>
-<option>
-        Terapia de nutrição enteral e parenteral
-</option>
-     </select>
-    </div>
-    <div class="form-group">
-     <input placeholder="Email" type="email"/>
-    </div>
-    <div class="form-group">
-        <input placeholder="CNR-5 inscrição" type="number"/>
-       </div>
-    <div class="form-group">
-     <input placeholder="Senha" type="password"/>
-    </div>
-    <div class="form-group privacy-policy">
-     <input type="checkbox"/>
-     <label>
-      Eu concordo com
-      <a href="politica_de_privacidade.html">
-       Politica de privacidade&Termos de Serviço
-      </a>
-     </label>
-    </div>
-    <div class="form-group">
-     <button class="submit-button">
-      Crie uma conta
-     </button>
-    </div>
-    <div class="form-group login-link">
-     <p>
-      Já tem uma conta?
-      <a href="login_conta.html">
-       Entre
-      </a>
-     </p>
-    </div>
-   </div>
-  </div>
- </body>
+    <script>
+        function showNutritionistaFields() {
+            document.querySelector('.nutricionista').style.display = 'block';
+            document.querySelector('.cliente').style.display = 'none';
+            document.querySelector('.toggle-buttons button.active').classList.remove('active');
+            document.querySelector('.toggle-buttons button:nth-child(1)').classList.add('active');
+        }
+
+        function showClienteFields() {
+            document.querySelector('.cliente').style.display = 'block';
+            document.querySelector('.nutricionista').style.display = 'none';
+            document.querySelector('.toggle-buttons button.active').classList.remove('active');
+            document.querySelector('.toggle-buttons button:nth-child(2)').classList.add('active');
+        }
+
+        // Initialize the display of fields
+        showNutritionistaFields(); // Set initial display
+    </script>
+</body>
 </html>
