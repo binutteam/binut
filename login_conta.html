@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<html>
- <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-   Login
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
+    <title>Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <style>
+    body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             display: flex;
@@ -97,7 +94,7 @@
             font-weight: 600;
         }
         .form-group input, .form-group select {
-            width: 100%;
+            width: 92%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -175,189 +172,83 @@
                 border-bottom-right-radius: 20px;
             }
         }
-  </style>
- </head>
- <body>
-  <div class="container">
-   <div class="left-section">
-    <h1>
-     Saúde&Bem-estar caminhando juntos!
-    </h1>
-    <p>
-     Binut, uma plataforma desenvolvida para nutrcionistas e pessoas determinadas!
-    </p>
-    <div class="testimonial">
-     <p>
-        O Binut é uma iniciativa que começou em 2024, num projeto para a faculdade, apesar do nosso time pequeno, acredito que o Binut está sempre buscando trazer o melhorar para seus clientes.
-     </p>
-     <div class="author">
-      <img alt="Maria Castilho" height="56" src="mariaimaculada.jpeg" width="56
-      "/>
-      <div>
-       <strong>
-        Maria Castilho
-       </strong>
-       <br/>
-       Fundadora, time de desenvolvedores
-      </div>
-     </div>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>Saúde & Bem-estar caminhando juntos!</h1>
+            <p>Binut, uma plataforma desenvolvida para nutricionistas e pessoas determinadas!</p>
+            <div class="testimonial">
+                <p>Testo exemplo</p>
+                <div class="author">
+                    <img alt="Maria Oliveira" src="rita.jpeg" width="56" height="56"/>
+                    <div>
+                        <strong>Maria Oliveira</strong><br/>
+                        Co-Fundadora, time de desenvolvedores
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Vamos criar uma conta?</h2>
+            <div class="form-group">
+                <div class="toggle-buttons">
+                    <button class="active" onclick="showNutritionistFields()">Nutricionista</button>
+                    <button onclick="showClientFields()">Cliente</button>
+                </div>
+            </div>
+
+            <div class="nutritionist-fields">
+                <div class="form-group">
+                    <input placeholder="Nome completo" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Email" type="email"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Senha" type="password"/>
+                </div>
+            </div>
+
+            <div class="client-fields">
+                <div class="form-group">
+                    <input placeholder="Nome completo" type="text"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Email" type="email"/>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Senha" type="password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="cadastro-link">
+                    <p>Não tem uma conta? <a href="cadastro_login.html">Crie uma agora!</a></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="submit-button">Entrar</button>
+            </div>
+        </div>
     </div>
-   </div>
-   <div class="right-section">
-    <h2>
-     Vamos criar uma conta?
-    </h2>
-    <div class="form-group">
-     <div class="toggle-buttons">
-      <button class="active">
-        Nutricionista
-      </button>
-      <button>
-       Cliente
-      </button>
-     </div>
-    </div>
-    <div class="form-group">
-     <input placeholder="Nome completo" type="text"/>
-    </div>
-    <div class="form-group">
-      <select>
-        <option>
-            Educação alimentar e nutricional
-       </option>
-       <option>
-         Gestão de políticas públicas e programas em alimentação e nutrição
-       </option>
-       <option>
-        Nutrição clínica
-</option>
-<option>
-        Nutrição clínica em cardiologia
-</option>
-<option>
-        Nutrição clínica em cuidados paliativos
-</option>
-<option>
-        Nutrição clínica em endocrinologia e metabologia
-</option>
-<option>
-        Nutrição clínica em gastroenterologia
-</option>
-<option>
-        Nutrição clínica em gerontologia
-</option>
-<option>
-        Nutrição clínica em nefrologia
-</option>
-<option>
-        Nutrição clínica em oncologia
-</option>
-<option>
-        Nutrição clínica em terapia intensiva
-</option>
-<option>
-        Nutrição de precisão
-</option>
-<option>
-        Nutrição e alimentos funcionais
-</option>
-<option>
-        Nutrição e fitoterapia
-</option>
-<option>
-        Nutrição em alimentação coletiva
-</option>
-<option>
-        Nutrição em alimentação coletiva hospitalar
-</option>
-<option>
-        Nutrição em alimentação escolar
-</option>
-<option>
-        Nutrição em atenção primária e saúde da família e comunidade
-</option>
-<option>
-        Nutrição em esportes e exercício físico
-</option>
-<option>
-        Nutrição em estética
-</option>
-<option>
-        Nutrição em marketing
-</option>
-<option>
-        Nutrição em saúde coletiva
-</option>
-<option>
-        Nutrição em saúde da mulher
-</option>
-<option>
-        Nutrição em saúde de povos e comunidades tradicionais
-</option>
-<option>
-        Nutrição em saúde indígena
-</option>
-<option>
-        Nutrição em saúde mental
-</option>
-<option>
-        Nutrição em transtornos alimentares
-</option>
-<option>
-        Nutrição em vegetarianismo e veganismo
-</option>
-<option>
-        Nutrição materno-infantil
-</option>
-<option>
-        Nutrição na produção de refeições comerciais
-</option>
-<option>
-        Nutrição na produção da tecnologia de alimentos e bebidas
-</option>
-<option>
-        Qualidade e segurança dos alimentos
-</option>
-<option>
-        Segurança alimentar e nutricional
-</option>
-<option>
-        Terapia de nutrição enteral e parenteral
-</option>
-     </select>
-    </div>
-    <div class="form-group">
-     <input placeholder="Email" type="email"/>
-    </div>
-    <div class="form-group">
-        <input placeholder="CNR-5 inscrição" type="number"/>
-       </div>
-    <div class="form-group">
-     <input placeholder="Senha" type="password"/>
-    </div>
-    <div class="form-group privacy-policy">
-     <input type="checkbox"/>
-     <label>
-      Eu concordo com
-      <a href="politica_de_privacidade.html">
-       Politica de privacidade&Termos de Serviço
-      </a>
-     </label>
-    </div>
-    <div class="form-group">
-     <button class="submit-button">
-      Crie uma conta
-     </button>
-    </div>
-    <div class="form-group login-link">
-     <p>
-      Já tem uma conta?
-      <a href="#">
-       Entre
-      </a>
-     </p>
-    </div>
-   </div>
-  </div>
- </body>
+    <script>
+        function showNutritionistFields() {
+            document.querySelector('.nutritionist-fields').style.display = 'block';
+            document.querySelector('.client-fields').style.display = 'none';
+            document.querySelector('.toggle-buttons button.active').classList.remove('active');
+            document.querySelector('.toggle-buttons button:nth-child(1)').classList.add('active');
+        }
+
+        function showClientFields() {
+            document.querySelector('.client-fields').style.display = 'block';
+            document.querySelector('.nutritionist-fields').style.display = 'none';
+            document.querySelector('.toggle-buttons button.active').classList.remove('active');
+            document.querySelector('.toggle-buttons button:nth-child(2)').classList.add('active');
+        }
+
+        // Exibir os campos do nutricionista por padrão
+        showNutritionistFields();
+    </script>
+</body>
 </html>
