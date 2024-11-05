@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutricionista perfil</title>
-<head>
+  <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
@@ -58,57 +58,203 @@
         }
 
         .calendario-image {
-              object-fit: contain; 
-              position: relative;
-            }
+            object-fit: contain; 
+            position: relative;
+        }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                height: 30%;
-                border-radius: 0;
-                border-bottom-left-radius: 50px;
-                border-bottom-right-radius: 50px;
-            }
-            .sidebar nav {
-                flex-direction: row;
-                justify-content: space-around;
-            }
-            .content {
-                width: 100%;
-                height: 70%;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-            }
-            .content h1 {
-                font-size: 24px;
-            }
-            .content .icon {
-                font-size: 24px;
-                margin-left: 5px;
-            }
-            }   
+        .calendar {
+            display: inline-grid;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            padding: 40px; /* Aumentado o padding */
+            border-radius: 5px;
+            box-shadow: 0px 40px 30px -20px rgba(0,0,0,0.3);
+        }
+             
+        .calendar .month {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+             
+        .calendar .month .year {
+            font-weight: 600;
+            margin-left: 10px;
+        }
+             
+        .calendar .month .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #007A3D;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            transition-duration: .2s;
+            position: relative;
+        }
+             
+        .calendar .days {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(7, 1fr);
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+             
+        .calendar .days span {
+            width: 50px;
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+        }
+             
+        .calendar .dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            align-items: stretch;
+            justify-content: space-evenly;
+            align-content: space-between;
+        }
+             
+        .calendar .dates button {
+            cursor: pointer;
+            outline: 0;
+            border: 0;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            justify-self: left;
+            align-self: left;
+            width: 90px;
+            height: 90px;
+            border-radius: 50px;
+            margin: 2px;
+            transition-duration: .2s;
+        }
+             
+        .calendar .dates button.today {
+            box-shadow: inset 0px 0px 0px 2px #0a3d62;
+        }
+             
+        .calendar .dates button:first-child {
+            grid-column: 3;
+        }
+             
+        .calendar .dates button:hover {
+            background: #eee;
+        }
+             
+        .calendar .dates button:focus {
+            background: #007A3D;
+            color: #fff;
+            font-weight: 600;
+        }
     </style>
-</head>
+  </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <nav>
-                <a href="#">EXPERIENCIA</a>
-                <a href="#">FORMAÇÃO</a>
-                <a href="#">AVALIAÇÕES</a>
-            </nav>
-        </div>
-        <div class="content">
-            <h1>Agenda</h1>
-            <div class="calendario-image">
-             <img src="calendario.png" alt="calendario" width="60" height="43">
-            </div>            
-        </div>
-    </div>
+   <div class="container">
+       <div class="sidebar">
+           <nav>
+               <a href="#">EXPERIENCIA</a>
+               <a href="#">FORMAÇÃO</a>
+               <a href="#">AVALIAÇÕES</a>
+           </nav>
+       </div>
+       <div class="content">
+         <h1>Agenda</h1>
+         <div class="calendario-image">
+           <img src="calendario.png" alt="calendario" width="60" height="43">
+         </div>
+         <div class="calendar">
+           <div class="month">
+             <a href="#" class="nav" id="prev-month"><i class="fas fa-angle-left"></i></a>
+             <div id="month-year"></div>
+             <a href="#" class="nav" id="next-month"><i class="fas fa-angle-right"></i></a>
+           </div>
+           <div class="days">
+             <span>Seg</span>
+             <span>Ter</span>
+             <span>Qua</span>
+             <span>Qui</span>
+             <span>Sex</span>
+             <span>Sáb</span>
+             <span>Dom</span>
+           </div>
+           <div class="dates" id="dates"></div>
+         </div>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+   const daysOfWeek = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+   const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    
+   let currentDate = new Date();
+
+   const monthYearDiv = document.getElementById('month-year');
+   const datesDiv = document.getElementById('dates');
+    
+   // Função para renderizar o calendário
+   function renderCalendar() {
+     const month = currentDate.getMonth();
+     const year = currentDate.getFullYear();
+      
+     // Exibe o mês e o ano
+     monthYearDiv.innerHTML = `${months[month]} <span class="year">${year}</span>`;
+
+     // Limpar os dias do calendário atual
+     datesDiv.innerHTML = '';
+
+     // Primeiro dia do mês
+     const firstDayOfMonth = new Date(year, month, 1);
+     const lastDayOfMonth = new Date(year, month + 1, 0);
+     const lastDateOfMonth = lastDayOfMonth.getDate();
+      
+     // Determinar o dia da semana do primeiro dia do mês
+     let firstDay = firstDayOfMonth.getDay();  // 0 (domingo) até 6 (sábado)
+     if (firstDay === 0) firstDay = 7; // Ajustar para que domingo seja 7 e não 0
+
+     // Adicionar os dias do mês
+     for (let i = 1; i < firstDay; i++) {
+       datesDiv.innerHTML += '<button disabled></button>';  // Espaços vazios
+     }
+
+     for (let day = 1; day <= lastDateOfMonth; day++) {
+       const button = document.createElement('button');
+       button.innerHTML = `<time>${day}</time>`;
+       // Marcar o dia atual
+       if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+         button.classList.add('today');
+       }
+       datesDiv.appendChild(button);
+     }
+   }
+
+   // Navegação para o mês anterior
+   document.getElementById('prev-month').addEventListener('click', function() {
+     currentDate.setMonth(currentDate.getMonth() - 1);
+     renderCalendar();
+   });
+
+   // Navegação para o próximo mês
+   document.getElementById('next-month').addEventListener('click', function() {
+     currentDate.setMonth(currentDate.getMonth() + 1);
+     renderCalendar();
+   });
+
+   // Carregar o calendário ao carregar a página
+   renderCalendar();
+ });
+</script>         
+       </div>
+   </div>
 </body>
 </html>
