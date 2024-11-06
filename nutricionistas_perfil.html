@@ -3,258 +3,244 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutricionista perfil</title>
-  <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            display: flex;
-            height: 100vh;
-            flex-direction: row;
-        }
-        .sidebar {
-            background-color: #007A3D;
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            border-top-right-radius: 50px;
-            border-bottom-right-radius: 50px;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            margin-right: 20px;
-        }
-        .sidebar a:last-child {
-            margin-right: 0;
-        }
-        .sidebar nav {
-            display: flex;
-            justify-content: center;
-        }
-        .content {
-            background-color: white;
-            width: 60%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 20px;
-        }
-        .content h1 {
-            color: #007A3D;
-            font-size: 36px;
-            margin: 0;
-        }
-        .content .icon {
-            font-size: 36px;
-            margin-left: 10px;
-        }
-
-        .calendario-image {
-            object-fit: contain; 
-            position: relative;
-        }
-
-        .calendar {
-            display: inline-grid;
-            justify-content: center;
-            align-items: center;
-            background: #fff;
-            padding: 40px; /* Aumentado o padding */
-            border-radius: 5px;
-            box-shadow: 0px 40px 30px -20px rgba(0,0,0,0.3);
-        }
-             
-        .calendar .month {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 20px;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-             
-        .calendar .month .year {
-            font-weight: 600;
-            margin-left: 10px;
-        }
-             
-        .calendar .month .nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: #007A3D;
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-            transition-duration: .2s;
-            position: relative;
-        }
-             
-        .calendar .days {
-            display: grid;
-            justify-content: center;
-            align-items: center;
-            grid-template-columns: repeat(7, 1fr);
-            color: #999;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-             
-        .calendar .days span {
-            width: 50px;
-            justify-self: center;
-            align-self: center;
-            text-align: center;
-        }
-             
-        .calendar .dates {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            align-items: stretch;
-            justify-content: space-evenly;
-            align-content: space-between;
-        }
-             
-        .calendar .dates button {
-            cursor: pointer;
-            outline: 0;
-            border: 0;
-            background: transparent;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            justify-self: left;
-            align-self: left;
-            width: 90px;
-            height: 90px;
-            border-radius: 50px;
-            margin: 2px;
-            transition-duration: .2s;
-        }
-             
-        .calendar .dates button.today {
-            box-shadow: inset 0px 0px 0px 2px #0a3d62;
-        }
-             
-        .calendar .dates button:first-child {
-            grid-column: 3;
-        }
-             
-        .calendar .dates button:hover {
-            background: #eee;
-        }
-             
-        .calendar .dates button:focus {
-            background: #007A3D;
-            color: #fff;
-            font-weight: 600;
-        }
-    </style>
-  </head>
+  <title>Nutricionista Perfil</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      flex-direction: row;
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    .sidebar {
+      background-color: #007A3D;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 55px;
+    border-top-right-radius: 43px;
+    border-bottom-right-radius: 50px;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: flex-start;
+} 
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      margin-right: 20px;
+    }
+    .sidebar nav {
+      display: flex;
+      justify-content: center;
+    }
+    .content {
+      background-color: white;
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+    }
+    .content h1 {
+      color: #007A3D;
+      font-size: 36px;
+      margin: 0;
+    }
+    .calendario-image {
+      object-fit: contain; 
+      position: relative;
+    }
+    .calendar {
+      display: inline-grid;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0px 40px 30px -20px rgba(0,0,0,0.3);
+    }
+    .calendar .month {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .calendar .days {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(7, 1fr);
+      color: #999;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .calendar .dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      align-items: stretch;
+      justify-content: space-evenly;
+      align-content: space-between;
+    }
+    .calendar .dates button {
+      cursor: pointer;
+      outline: 0;
+      border: 0;
+      background: transparent;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50px;
+      margin: 2px;
+      transition-duration: .2s;
+    }
+    .calendar .dates button.today {
+      box-shadow: inset 0px 0px 0px 2px #0a3d62;
+    }
+    .upload-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .upload-container input {
+      margin-bottom: 10px;
+    }
+    .image {
+      width: 100%;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
 <body>
-   <div class="container">
-       <div class="sidebar">
-           <nav>
-               <a href="#">EXPERIENCIA</a>
-               <a href="#">FORMAÇÃO</a>
-               <a href="#">AVALIAÇÕES</a>
-           </nav>
-       </div>
-       <div class="content">
-         <h1>Agenda</h1>
-         <div class="calendario-image">
-           <img src="calendario.png" alt="calendario" width="60" height="43">
-         </div>
-         <div class="calendar">
-           <div class="month">
-             <a href="#" class="nav" id="prev-month"><i class="fas fa-angle-left"></i></a>
-             <div id="month-year"></div>
-             <a href="#" class="nav" id="next-month"><i class="fas fa-angle-right"></i></a>
-           </div>
-           <div class="days">
-             <span>Seg</span>
-             <span>Ter</span>
-             <span>Qua</span>
-             <span>Qui</span>
-             <span>Sex</span>
-             <span>Sáb</span>
-             <span>Dom</span>
-           </div>
-           <div class="dates" id="dates"></div>
-         </div>
-
-<script>
- document.addEventListener('DOMContentLoaded', function() {
-   const daysOfWeek = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-   const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
-                   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    
-   let currentDate = new Date();
-
-   const monthYearDiv = document.getElementById('month-year');
-   const datesDiv = document.getElementById('dates');
-    
-   // Função para renderizar o calendário
-   function renderCalendar() {
-     const month = currentDate.getMonth();
-     const year = currentDate.getFullYear();
+  <div class="container">
+    <div class="sidebar">
+      <div class="image" id="profileImage" style="background-image: url('https://placehold.co/400x600');">
+        <img alt="Imagem de perfil" height="1481" id="profileImageTag" src="https://storage.googleapis.com/a1aa/image/yfRDeWaoH1ofTImRwXqFUKK1i58ycQ6fH3hiqf55l5lTZrydC.jpg" style="width: 100%; height: 100%; object-fit: cover; display: none;" width="877"/>
+      </div>
+      <!----------  Imagem de perfil enviada aparece aqui ---->
+      <div class="upload-container">
+        <input id="imageUpload" type="file" accept="image/*"/>
+        <button onclick="saveImage()">Salvar</button>
+      </div>
+      <nav>
+        <a href="#">EXPERIENCIA</a>
+        <a href="#">FORMAÇÃO</a>
+        <a href="#">AVALIAÇÕES</a>
+      </nav>
+    </div>
+    <div class="content">
+      <h1>Agenda</h1>
+      <div class="calendario-image">
+        <img src="calendario.png" alt="calendario" width="60" height="43">
+      </div>
+      <!----------  Calendário dados sobre este ---->
+      <div class="calendar">
+        <div class="month">
+          <a href="#" class=" nav" id="prev-month"><i class="fas fa-angle-left"></i></a>
+          <div id="month-year"></div>
+          <a href="#" class="nav" id="next-month"><i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="days">
+          <span>Seg</span>
+          <span>Ter</span>
+          <span>Qua</span>
+          <span>Qui</span>
+          <span>Sex</span>
+          <span>Sáb</span>
+          <span>Dom</span>
+        </div>
+        <div class="dates" id="dates"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const daysOfWeek = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+      const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
       
-     // Exibe o mês e o ano
-     monthYearDiv.innerHTML = `${months[month]} <span class="year">${year}</span>`;
+      let currentDate = new Date();
 
-     // Limpar os dias do calendário atual
-     datesDiv.innerHTML = '';
-
-     // Primeiro dia do mês
-     const firstDayOfMonth = new Date(year, month, 1);
-     const lastDayOfMonth = new Date(year, month + 1, 0);
-     const lastDateOfMonth = lastDayOfMonth.getDate();
+      const monthYearDiv = document.getElementById('month-year');
+      const datesDiv = document.getElementById('dates');
       
-     // Determinar o dia da semana do primeiro dia do mês
-     let firstDay = firstDayOfMonth.getDay();  // 0 (domingo) até 6 (sábado)
-     if (firstDay === 0) firstDay = 7; // Ajustar para que domingo seja 7 e não 0
+      function renderCalendar() {
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+        
+        monthYearDiv.innerHTML = `${months[month]} <span class="year">${year}</span>`;
+        datesDiv.innerHTML = '';
 
-     // Adicionar os dias do mês
-     for (let i = 1; i < firstDay; i++) {
-       datesDiv.innerHTML += '<button disabled></button>';  // Espaços vazios
-     }
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        const lastDateOfMonth = lastDayOfMonth.getDate();
+        
+        let firstDay = firstDayOfMonth.getDay();
+        if (firstDay === 0) firstDay = 7;
 
-     for (let day = 1; day <= lastDateOfMonth; day++) {
-       const button = document.createElement('button');
-       button.innerHTML = `<time>${day}</time>`;
-       // Marcar o dia atual
-       if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
-         button.classList.add('today');
-       }
-       datesDiv.appendChild(button);
-     }
-   }
+        for (let i = 1; i < firstDay; i++) {
+          datesDiv.innerHTML += '<button disabled></button>';
+        }
 
-   // Navegação para o mês anterior
-   document.getElementById('prev-month').addEventListener('click', function() {
-     currentDate.setMonth(currentDate.getMonth() - 1);
-     renderCalendar();
-   });
+        for (let day = 1; day <= lastDateOfMonth; day++) {
+          const button = document.createElement('button');
+          button.innerHTML = `<time>${day}</time>`;
+          if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+            button.classList.add('today');
+          }
+          datesDiv.appendChild(button);
+        }
+      }
 
-   // Navegação para o próximo mês
-   document.getElementById('next-month').addEventListener('click', function() {
-     currentDate.setMonth(currentDate.getMonth() + 1);
-     renderCalendar();
-   });
+      document.getElementById('prev-month').addEventListener('click', function() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+      });
 
-   // Carregar o calendário ao carregar a página
-   renderCalendar();
- });
-</script>         
-       </div>
-   </div>
+      document.getElementById('next-month').addEventListener('click', function() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+      });
+
+      renderCalendar();
+    });
+
+    //---------------------------- Upload de imagem salvar ----------------------------//
+
+    function saveImage() {
+      const fileInput = document.getElementById('imageUpload');
+      const profileImage = document.getElementById('profileImage');
+      const profileImageTag = document.getElementById('profileImageTag');
+      
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          profileImage.style.backgroundImage = `url(${e.target.result})`;
+          profileImageTag.src = e.target.result;
+        }
+        
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    }
+  </script>
 </body>
 </html>
