@@ -1,93 +1,103 @@
 <?php
-// Inclui o arquivo de banco de dados
 include('config.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Checa se é nutri ou cliente
-    $isNutritionist = isset($_POST['nome_completo_nutricionista']) && !empty($_POST['nome_completo_nutricionista']);
-    $isClient = isset($_POST['nome_completo_cliente']) && !empty($_POST['nome_completo_cliente']);
-
-    // Vê se há erros
+if (isset($_POST['submit'])) {
+    $isNutritionista = isset($_POST['nome_nutri']) && !empty($_POST['nome_user_nutri']);
+    $isCliente = isset($_POST['nome_cliente']) && !empty($_POST['nome_cliente']);
     $errors = [];
 
-    // Validate nutritionist data
-    if ($isNutritionist) {
-        $nomeCompleto = htmlspecialchars(trim($_POST['nome_completo_nutricionista']));
-        $nomeUsuario = htmlspecialchars(trim($_POST['nome_usuario_nutricionista']));
-        $especialidade = htmlspecialchars(trim($_POST['especialidade']));
-        $email = htmlspecialchars(trim($_POST['email_nutricionista']));
-        $cnrInscricao = htmlspecialchars(trim($_POST['cnr_inscricao']));
-        $senha = htmlspecialchars(trim($_POST['senha_nutricionista']));
+    if ($isNutritionista) {
+        $nomeCompleto = htmlspecialchars(trim($_POST['nome_nutri']));
+        $nomeUsuario = htmlspecialchars(trim($_POST['nome_user_nutri']));
+        $especialidade = htmlspecialchars(trim($_POST['nutri_especialidade']));
+        $email = htmlspecialchars(trim($_POST['email_nutri']));
+        $CNR_nutri = htmlspecialchars(trim($_POST['CNR_nutri']));
+        $senha = htmlspecialchars(trim($_POST['senha_nutri']));
+        $idEndereco = isset($_POST['id_endereco']) && !empty($_POST['id_endereco']) ? $_POST['id_endereco'] : NULL;
 
-        // validação
-        if (empty($nomeCompleto) || empty($nomeUsuario) || empty($especialidade) || empty($email) || empty($cnrInscricao) || empty($senha)) {
+        // Validação
+        if (empty($nomeCompleto) || empty($nomeUsuario) || empty($especialidade) || empty($email) || empty($CNR_nutri) || empty($senha)) {
             $errors[] = "Todos os campos são obrigatórios para nutricionistas.";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Email inválido.";
         }
     }
 
-    // dados do cliente
-    if ($isClient) {
-        $nomeCompletoCliente = htmlspecialchars(trim($_POST['nome_completo_cliente']));
-        $nomeUsuarioCliente = htmlspecialchars(trim($_POST['nome_usuario_cliente']));
+    if ($isCliente) {
+        $nomeCompletoCliente = htmlspecialchars(trim($_POST['nome_cliente']));
+        $nomeUsuarioCliente = htmlspecialchars(trim($_POST['nome_user_cliente']));
         $emailCliente = htmlspecialchars(trim($_POST['email_cliente']));
         $senhaCliente = htmlspecialchars(trim($_POST['senha_cliente']));
+        $idEnderecoCliente = isset($_POST['id_endereco_cliente']) && !empty($_POST['id_endereco_cliente']) ? $_POST['id_endereco_cliente'] : NULL;
 
-        // Add validation logic as needed
+        // Validação
         if (empty($nomeCompletoCliente) || empty($nomeUsuarioCliente) || empty($emailCliente) || empty($senhaCliente)) {
             $errors[] = "Todos os campos são obrigatórios para clientes.";
+        } elseif (!filter_var($emailCliente, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Email inválido.";
         }
     }
 
-    // checa a politica de privacidade
     if (!isset($_POST['privacy-policy'])) {
         $errors[] = "Você deve concordar com a Política de Privacidade e Termos de Serviço.";
     }
 
-    // se há erros
     if (empty($errors)) {
-        if ($isNutritionist) {
-            // Prepara a query de inserção
-            $sql = "INSERT INTO nutricionistas (nome_completo, nome_usuario, especialidade, email, cnr_inscricao, senha)
-                    VALUES (?, ?, ?, ?, ?, ?)";
-
-            if ($stmt = $conn->prepare($sql)) {
-                $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-                $stmt->bind_param("ssssss", $nomeCompleto, $nomeUsuario, $especialidade, $email, $cnrInscricao, $senhaHash);
-
-                if ($stmt->execute()) {
-                    echo "Nutricionista cadastrado com sucesso!";
-                } else {
-                    echo "Erro ao cadastrar nutricionista: " . $stmt->error;
+        if ($isNutritionista) {
+            // Verifica se já existe um nutricionista com o mesmo email
+            $checkEmail = $conn->prepare("SELECT * FROM nutricionista WHERE email_nutri = ?");
+            $checkEmail->bind_param("s", $email);
+            $checkEmail->execute();
+            $result = $checkEmail->get_result();
+            if ($result->num_rows > 0) {
+                $errors[] = "Já existe um nutricionista cadastrado com este email.";
+            } else {
+                $sql = "INSERT INTO nutricionista (nome_nutri, email_nutri, CRN_nutri, senha_nutri, id_endereco, data_cadastro)
+                        VALUES (?, ?, ?, ?, ?, NOW())";
+                if ($stmt = $ conn->prepare($sql)) {
+                    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+                    $stmt->bind_param("sssss", $nomeCompleto, $email, $CNR_nutri, $senhaHash, $idEndereco);
+                    if ($stmt->execute()) {
+                        echo "Nutricionista cadastrado com sucesso!";
+                    } else {
+                        echo "Erro ao cadastrar nutricionista: " . $stmt->error;
+                    }
+                    $stmt->close();
                 }
-                $stmt->close();
             }
+            $checkEmail->close();
         }
 
-        if ($isClient) {
-            // Prepara a query de inserção
-            $sql = "INSERT INTO clientes (nome_completo, nome_usuario, email, senha)
-                    VALUES (?, ?, ?, ?)";
-
-            if ($stmt = $conn->prepare($sql)) {
-                $senhaHash = password_hash($senhaCliente, PASSWORD_DEFAULT);
-                $stmt->bind_param("ssss", $nomeCompletoCliente, $nomeUsuarioCliente, $emailCliente, $senhaHash);
-
-                if ($stmt->execute()) {
-                    echo "Cliente cadastrado com sucesso!";
-                } else {
-                    echo "Erro ao cadastrar cliente: " . $stmt->error;
+        if ($isCliente) {
+            // Verifica se já existe um cliente com o mesmo email
+            $checkEmailCliente = $conn->prepare("SELECT * FROM cliente WHERE email_cliente = ?");
+            $checkEmailCliente->bind_param("s", $emailCliente);
+            $checkEmailCliente->execute();
+            $resultCliente = $checkEmailCliente->get_result();
+            if ($resultCliente->num_rows > 0) {
+                $errors[] = "Já existe um cliente cadastrado com este email.";
+            } else {
+                $sql = "INSERT INTO cliente (nome_cliente, email_cliente, senha_cliente, id_endereco, data_cadastro)
+                        VALUES (?, ?, ?, ?, NOW())";
+                if ($stmt = $conn->prepare($sql)) {
+                    $senhaHashCliente = password_hash($senhaCliente, PASSWORD_DEFAULT);
+                    $stmt->bind_param("ssss", $nomeCompletoCliente, $emailCliente, $senhaHashCliente, $idEnderecoCliente);
+                    if ($stmt->execute()) {
+                        echo "Cliente cadastrado com sucesso!";
+                    } else {
+                        echo "Erro ao cadastrar cliente: " . $stmt->error;
+                    }
+                    $stmt->close();
                 }
-                $stmt->close();
             }
+            $checkEmailCliente->close();
         }
     } else {
-        // Mostra os erros
         foreach ($errors as $error) {
             echo $error . "<br>";
         }
     }
 
-    // Fecha a conexão
     $conn->close();
 } else {
     echo "Método de requisição inválido.";
