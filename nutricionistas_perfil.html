@@ -187,11 +187,12 @@
     </style>
 </head>
 <body>
-    <form id="nutricionistaForm" action="nutri_perfil.php" method="POST" enctype="multipart/form-data">
+    
     <div class="esquerda-container">
         <div class="image" id="profileImage" style="background-image: url('https://placehold.co/600x800');">
             <div class="overlay"></div>
             <div class="upload-container">
+                <form action="nutri_perfil.php" method="POST">
                 <input accept="image/*" id="imageUpload" type="file"/>
                 <button onclick="saveImage()">Salvar</button>
             </div>
@@ -260,6 +261,7 @@
             <div id="popup-times"></div>
             <button onclick="closePopup()">Fechar</button>
         </div>
+    
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -485,5 +487,6 @@
             }
         });
     </script>
+    </form>
 </body>
 </html>
