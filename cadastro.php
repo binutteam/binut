@@ -1,4 +1,7 @@
 <?php
+// Inclui o arquivo de banco de dados
+include('config.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Checa se é nutri ou cliente
     $isNutritionist = isset($_POST['nome_completo_nutricionista']) && !empty($_POST['nome_completo_nutricionista']);
@@ -40,24 +43,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Você deve concordar com a Política de Privacidade e Termos de Serviço.";
     }
 
-    // se há errrps
+    // se há erros
     if (empty($errors)) {
         if ($isNutritionist) {
- echo "Nutricionista cadastrado com sucesso:<br>";
-            echo "Nome Completo: $nomeCompleto<br>";
-            echo "Nome de Usuário: $nomeUsuario<br>";
-            echo "Especialidade: $especialidade<br>";
-            echo "Email: $email<br>";
-            echo "CNR-5 Inscrição: $cnrInscricao<br>";
-            echo "Senha: " . password_hash($senha, PASSWORD_DEFAULT) . "<br>";
+            // Prepara a query de inserção
+            $sql = "INSERT INTO nutricionistas (nome_completo, nome_usuario, especialidade, email, cnr_inscricao, senha)
+                    VALUES (?, ?, ?, ?, ?, ?)";
+
+            if ($stmt = $conn->prepare($sql)) {
+                $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+                $stmt->bind_param("ssssss", $nomeCompleto, $nomeUsuario, $especialidade, $email, $cnrInscricao, $senhaHash);
+
+                if ($stmt->execute()) {
+                    echo "Nutricionista cadastrado com sucesso!";
+                } else {
+                    echo "Erro ao cadastrar nutricionista: " . $stmt->error;
+                }
+                $stmt->close();
+            }
         }
 
         if ($isClient) {
-            echo "Cliente cadastrado com sucesso:<br>";
-            echo "Nome Completo: $nomeCompletoCliente<br>";
-            echo "Nome de Usuário: $nomeUsuarioCliente<br>";
-            echo "Email: $emailCliente<br>";
-            echo "Senha: " . password_hash($senhaCliente, PASSWORD_DEFAULT) . "<br>";
+            // Prepara a query de inserção
+            $sql = "INSERT INTO clientes (nome_completo, nome_usuario, email, senha)
+                    VALUES (?, ?, ?, ?)";
+
+            if ($stmt = $conn->prepare($sql)) {
+                $senhaHash = password_hash($senhaCliente, PASSWORD_DEFAULT);
+                $stmt->bind_param("ssss", $nomeCompletoCliente, $nomeUsuarioCliente, $emailCliente, $senhaHash);
+
+                if ($stmt->execute()) {
+                    echo "Cliente cadastrado com sucesso!";
+                } else {
+                    echo "Erro ao cadastrar cliente: " . $stmt->error;
+                }
+                $stmt->close();
+            }
         }
     } else {
         // Mostra os erros
@@ -65,6 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo $error . "<br>";
         }
     }
+
+    // Fecha a conexão
+    $conn->close();
 } else {
     echo "Método de requisição inválido.";
 }
+?>

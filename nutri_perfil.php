@@ -1,4 +1,7 @@
 <?php
+
+include('config.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Gerencia o envio de arquivos para a foto de perfil
     if (isset($_FILES['profilePicture'])) {
