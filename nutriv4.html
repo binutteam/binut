@@ -1,0 +1,492 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Nutricionista Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .esquerda-container, .direita-container {
+            width: 100%;
+            height: 50vh;
+            position: relative;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-size: cover;
+            position: relative;
+            border-top-right-radius: 43px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 128, 75, 0.659);
+            z-index: 1;
+            border-top-right-radius: 43px;
+            border-bottom-right-radius: 50px;
+        }
+
+        #profileImageTag {
+            display: none;
+        }
+
+        .upload-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            color: white;
+        }
+
+        .sidebar-texto-sobrposto {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 3;
+            text-align: center;
+            padding: 20px;
+        }
+
+        button {
+            background-color: rgba(0, 122, 61, 0);
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            text-decoration: underline;
+        }
+
+        .calendar {
+            display: inline-grid;
+            justify-content: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            align-items: center;
+        }
+
+        .calendar .month {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .calendar .days {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(7, 1fr);
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .calendar .dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            align-items: stretch;
+            justify-content: space-evenly;
+            align-content: space-between;
+        }
+
+        .calendar .dates button {
+            cursor: pointer;
+            outline: 0;
+            border: 0;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            margin: 2px;
+            transition-duration: .2s;
+            position: relative;
+        }
+
+        .calendar .dates button.today {
+            box-shadow: inset 0px 0px 0px 2px #16620a;
+        }
+
+        .available-times-popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            z-index: 10;
+            display: none;
+        }
+
+        .available-times-popup h3 {
+            margin-top: 0;
+        }
+
+        .available-times-popup button {
+            margin: 5px;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+
+            .esquerda-container, .direita-container {
+                width: 50%;
+                height: 100vh;
+            }
+
+            .calendar {
+                padding: 130px;
+            }
+
+            .calendar .month {
+                font-size: 33px;
+            }
+
+            .calendar .dates button {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="esquerda-container">
+        <div class="image" id="profileImage" style="background-image: url('https://placehold.co/600x800');">
+            <div class="overlay"></div>
+            <div class="upload-container">
+                <form action="nutri_image.php" method="POST">
+                <input accept="image/*" id="imageUpload" type="file"/>
+                <button onclick="saveImage()">Salvar</button>
+            </div>
+        </div>
+        <div class="sidebar-texto-sobrposto">
+            <nav>
+                <button class="button" onclick="showContent('experiencia')">EXPERIENCIA</button>
+                <button class="button" onclick="showContent('formacao')">FORMAÇÃO</button>
+                <button class="button" onclick="showContent('avaliacoes')">AVALIAÇÕES</button>
+            </nav>
+            <div id="content-container" class="p-4">
+                <div id="experiencia" class="hidden">
+                    <h2>Experiência</h2>
+                    <textarea id="experiencia-text" class="w-full h-32 p-2 border rounded" placeholder="Escreva sobre sua experiência..."></textarea>
+                    <button class="button mt-2" onclick="saveExperiencia()">Salvar</button>
+                    <p id="experiencia-saved" class="mt-2 hidden"></p>
+                </div>
+                <div id="formacao" class="hidden">
+                    <h2>Formação</h2>
+                    <input accept="image/*" id="formacaoImageUpload" type="file" class="block mt-2"/>
+                    <button class="button mt-2" onclick="saveFormacaoImage()">Salvar Imagem</button>
+                    <img id="formacaoImage" class="mt-2 hidden" alt="Imagem de formação do nutricionista"/>
+                </div>
+                <div id="avaliacoes" class="hidden">
+                    <h2>Avaliações</h2>
+                    <p>Detalhes sobre as avaliações do nutricionista.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="direita-container">
+        <h1>Agenda</h1>
+        <div class="calendario-image">
+            <img alt="Imagem de um calendário" height="43" src="calendario.png" width="60"/>
+        </div>
+        <div class="calendar">
+            <div class="month">
+                <a class="nav" href="#" id="prev-month">
+                    <i class="fas fa-angle-left"></i>
+                </a>
+                <div id="month-year"></div>
+                <a class="nav" href="#" id="next-month">
+                    <i class="fas fa-angle-right"></i>
+                </a>
+            </div>
+            <div class="days">
+                <span>Seg</span>
+                <span>Ter</span>
+                <span>Qua</span>
+                <span>Qui</span>
+                <span>Sex</span>
+                <span>Sáb</span>
+                <span>Dom</span>
+            </div>
+            <div class="dates" id="dates">
+                <button class="date-button" style="display: none;"><time>8</time></button>
+            </div>
+        </div>
+        <div id="available-times" style="display: none;">
+            <h3>Horários Disponíveis:</h3>
+            <div id="times"></div>
+            <p id="message" style="display: none; color: red;"></p>
+        </div>
+        <div class="available-times-popup" id="available-times-popup">
+            <h3>Horários Disponíveis:</h3>
+            <div id="popup-times"></div>
+            <button onclick="closePopup()">Fechar</button>
+        </div>
+    
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const daysOfWeek = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+            const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            
+            let currentDate = new Date();
+            let selectedDate = null;
+            let selectedTimes = {}; // Para armazenar os horários selecionados por data
+    
+            const monthYearDiv = document.getElementById('month-year');
+            const datesDiv = document.getElementById('dates');
+            const availableTimesDiv = document.getElementById('times');
+            const messageDiv = document.getElementById('message');
+            const popupDiv = document.getElementById('available-times-popup');
+            const popupTimesDiv = document.getElementById('popup-times');
+    
+            const availableHours = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00']; // Exemplos de horários
+    
+            // Função para renderizar o calendário
+            function renderCalendar() {
+                const month = currentDate.getMonth();
+                const year = currentDate.getFullYear();
+                
+                monthYearDiv.innerHTML = `${months[month]} <span class="year">${year}</span>`;
+                datesDiv.innerHTML = '';
+            
+                const firstDayOfMonth = new Date(year, month, 1);
+                const lastDayOfMonth = new Date(year, month + 1, 0);
+                const lastDateOfMonth = lastDayOfMonth.getDate();
+                
+                let firstDay = firstDayOfMonth.getDay();
+                if (firstDay === 0) firstDay = 7;
+    
+                for (let i = 1; i < firstDay; i++) {
+                    datesDiv.innerHTML += '<button disabled></button>';
+                }
+    
+                for (let day = 1; day <= lastDateOfMonth; day++) {
+                    const button = document.createElement('button');
+                    button.innerHTML = `<time>${day}</time>`;
+                    button.classList.add('date-button');
+                    if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+                        button.classList.add('today');
+                    }
+                    button.addEventListener('click', function() {
+                        handleDateClick(day);
+                    });
+                    datesDiv.appendChild(button);
+                }
+            }
+    
+            // Função para tratar o clique em uma data
+            function handleDateClick(day) {
+                selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                showAvailableTimes();
+            }
+    
+            // Função para exibir os horários disponíveis para a data selecionada
+            function showAvailableTimes() {
+                popupTimesDiv.innerHTML = ''; // Limpar a lista de horários
+                messageDiv.style.display = 'none'; // Limpar a mensagem
+    
+                // Verificar se a data selecionada já tem todos os horários reservados
+                const dateKey = formatDate(selectedDate);
+                const reservedTimes = selectedTimes[dateKey] || [];
+    
+                availableHours.forEach(time => {
+                    const button = document.createElement('button');
+                    button.innerText = time;
+                    button.classList.add('time-button');
+    
+                    // Se o horário já foi reservado, desabilitar o botão
+                    if (reservedTimes.includes(time)) {
+                        button.disabled = true;
+                        button.style.backgroundColor = 'gray';
+                    } else {
+                        button.addEventListener('click', function() {
+                            handleTimeSelection(dateKey, time);
+                        });
+                    }
+    
+                    popupTimesDiv.appendChild(button);
+                });
+    
+                popupDiv.style.display = 'block';
+    
+                // Verificar se todos os horários foram selecionados
+                if (reservedTimes.length === availableHours.length) {
+                    highlightFullDate();
+                }
+            }
+    
+            // Função para formatar a data (YYYY-MM-DD)
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+    
+            // Função para selecionar um horário
+            function handleTimeSelection(dateKey, time) {
+                if (!selectedTimes[dateKey]) {
+                    selectedTimes[dateKey] = [];
+                }
+                selectedTimes[dateKey].push(time);
+    
+                // Atualizar o estado da data (se todos os horários foram selecionados)
+                const reservedTimes = selectedTimes[dateKey];
+                if (reservedTimes.length === availableHours.length) {
+                    highlightFullDate();
+                }
+    
+                // Desabilitar o horário selecionado
+                const timeButtons = document.querySelectorAll('.time-button');
+                timeButtons.forEach(button => {
+                    if (button.innerText === time) {
+                        button.disabled = true;
+                        button.style.backgroundColor = 'red';
+                    }
+                });
+            }
+    
+            // Função para destacar a data cheia (sem horários disponíveis)
+            function highlightFullDate() {
+                const dateKey = formatDate(selectedDate);
+                const dateButtons = document.querySelectorAll('.date-button');
+                dateButtons.forEach(button => {
+                    const buttonDate = button.querySelector('time').innerText;
+                    if (buttonDate == selectedDate.getDate()) {
+                        button.style.backgroundColor = 'red';
+                        button.style.color = 'white';
+                    }
+                });
+    
+                messageDiv.innerHTML = `Todos os horários para este dia foram reservados. Por favor, escolha outra data.`;
+                messageDiv.style.display = 'block';
+            }
+    
+            // Navegação entre os meses
+            document.getElementById('prev-month').addEventListener('click', function(event) {
+                event.preventDefault();
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+    
+            document.getElementById('next-month').addEventListener('click', function(event) {
+                event.preventDefault();
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+    
+            renderCalendar();
+        });
+    
+        function saveImage() {
+            const fileInput = document.getElementById('imageUpload');
+            const profileImage = document.getElementById('profileImage');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    profileImage.style.backgroundImage = `url(${e.target.result})`;
+                }
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        function closePopup() {
+            document.getElementById('available-times-popup').style.display = 'none';
+        }
+
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('#content-container > div');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(contentId).classList.remove('hidden');
+        }
+
+        function saveExperiencia() {
+            const experienciaText = document.getElementById('experiencia-text').value;
+            localStorage.setItem('experiencia', experienciaText);
+            document.getElementById('experiencia-saved').innerText = experienciaText;
+            document.getElementById('experiencia-saved').classList.remove('hidden');
+            alert('Experiência salva com sucesso!');
+        }
+
+        function saveFormacaoImage() {
+            const fileInput = document.getElementById('formacaoImageUpload');
+            const formacaoImage = document.getElementById('formacaoImage');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    formacaoImage.src = e.target.result;
+                    formacaoImage.classList.remove('hidden');
+                    localStorage.setItem('formacaoImage', e.target.result);
+                }
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedExperiencia = localStorage.getItem('experiencia');
+            if (savedExperiencia) {
+                document.getElementById('experiencia-text').value = savedExperiencia;
+                document.getElementById('experiencia-saved').innerText = savedExperiencia;
+                document.getElementById('experiencia-saved').classList.remove('hidden');
+            }
+
+            const savedFormacaoImage = localStorage.getItem('formacaoImage');
+            if (savedFormacaoImage) {
+                const formacaoImage = document.getElementById('formacaoImage');
+                formacaoImage.src = savedFormacaoImage;
+                formacaoImage.classList.remove('hidden');
+            }
+        });
+    </script>
+    </form>
+</body>
+</html>

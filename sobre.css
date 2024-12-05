@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
+@media (max-width: 768px) {
+    .navbar .menu li a {
+        font-size: 16px; /* Smaller font on mobile */
+    }
+    
+    .home .home-content .text-1,
+    .home .home-content .text-3 {
+        font-size: 24px; /* Smaller text on mobile */
+    }
+    
+    .about-content {
+        flex-direction: column; /* Stack items vertically */
+    }
+    
+    .about .about-content .left, 
+    .about .about-content .right {
+        width: 100%; /* Full width on small screens */
+    }
+}
+
 *{
     margin: 0;
     padding: 0;

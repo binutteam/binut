@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,13 +13,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
 .carousel {
     position: static;
-    width: 100%; /* Ajuste conforme necessário */
+    width: 100%;
     margin: auto;
     overflow: hidden;
-
 }
 
 .carousel-images {
@@ -29,14 +27,11 @@ body {
     animation: slide 13s infinite;
 }
 
-
-
 .carousel-image {
-    width: 101%; /* Ajuste conforme necessário */
-    height: auto; /* Mantém a proporção original da imagem */
-    flex-shrink: 0; /* Impede que as imagens encolham */
+    width: 101%;
+    height: auto;
+    flex-shrink: 0;
 }
-
 
 @keyframes slide {
     0% { transform: translateX(0); }
@@ -54,31 +49,24 @@ body {
     border: none;
     padding: 10px;
     cursor: pointer;
-    z-index: 10; /* Para garantir que os botões estejam acima das imagens */
+    z-index: 10;
 }
 
 .prev { left: 10px; }
 .next { right: 10px; }
 
-
-html{
+html {
     scroll-behavior: smooth;
 }
 
-.max-width{
+.max-width {
     max-width: 1300px;
     padding: 0 80px;
     margin: auto;
 }
 
-
-
-
-
-
-
-/*  navbar   inicio*/
-.navbar{
+/* Navbar */
+.navbar {
     position: absolute;
     width: 100%;
     padding: 10px 0;
@@ -86,38 +74,38 @@ html{
     transition: all .3s ease;
 }
 
-.navbar.sticky{
-     background: #00804b;
-     padding: 15px 0;
+.navbar.sticky {
+    background: #00804b;
+    padding: 15px 0;
 }
 
-.navbar .max-width{
+.navbar .max-width {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.navbar .logo a{
+.navbar .logo a {
     color: #fff;
     font-size: 35px;
     font-weight: 500;
 }
 
-.navbar .logo a span{
+.navbar .logo a span {
     color: #00804b;
     transition: all .3s ease;
 }
 
-.navbar.sticky .logo a span{
+.navbar.sticky .logo a span {
     color: #fff;
 }
 
-.navbar .menu li{
+.navbar .menu li {
     list-style: none;
     display: inline-block;
 }
 
-.navbar .menu li a{
+.navbar .menu li a {
     color: #fff;
     font-size: 18px;
     font-weight: 500;
@@ -125,22 +113,16 @@ html{
     transition: color .3s ease;
 }
 
-.navbar .menu li a:hover{
+.navbar .menu li a:hover {
     color: #00804b;
 }
 
-.navbar.sticky .menu li a:hover{
+.navbar.sticky .menu li a:hover {
     color: #ccc;
 }
 
-
-
-
-
-
-
-/*  Home   inicio  */
-.home{
+/* Home */
+.home {
     display: flex;
     background: url(fotopretos.png) no-repeat;
     background-size: cover;
@@ -149,40 +131,35 @@ html{
     min-height: 500px;
 }
 
-.home .max-width{
+.home .max-width {
     margin: auto 0 auto 40px;
 }
 
 .gradient-text {
-    background-image: linear-gradient(to right, #6f976e, #00804b); /* Define o degradê */
+    background-image: linear-gradient(to right, #6f976e, #00804b);
     background-clip: text;
     font-size: 80px;
     font-weight: bold;
-    -webkit-background-clip: text; /* Para compatibilidade com WebKit (Chrome, Safari) */
-    color: transparent; /* Faz a cor do texto transparente para exibir o gradiente */
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-
-
-.home .home-content .text-1{
+.home .home-content .text-1 {
     font-size: 32px;
-    
 }
 
-.home .home-content .text-2{
+.home .home-content .text-2 {
     font-size: 80px;
     font-weight: 500;
     margin-left: -3px;
-
 }
 
-.home .home-content .text-3{
+.home .home-content .text-3 {
     font-size: 25px;
     margin: 5px 0;
-    
 }
 
-.home .home-content a{
+.home .home-content a {
     display: inline-block;
     background: #00804b;
     color: #fff;
@@ -194,17 +171,17 @@ html{
     transition: all .3s ease;
 }
 
-.home .home-content a:hover{
+.home .home-content a:hover {
     color: #00804b;
     background: none;
 }
 
-/*  Codigos similareis  */
-section{
+/* Seções */
+section {
     padding: 100px 0;
 }
 
-section .title{
+section .title {
     text-align: center;
     font-size: 40px;
     font-weight: 500;
@@ -213,7 +190,7 @@ section .title{
     position: relative;
 }
 
-section .title::before{
+section .title::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -224,7 +201,7 @@ section .title::before{
     transform: translate(-50%);
 }
 
-section .title::after{
+section .title::after {
     position: absolute;
     bottom: -12px;
     left: 50%;
@@ -235,63 +212,45 @@ section .title::after{
     transform: translate(-50%);
 }
 
-
-
-
-
-
-
-/*  Sessão beneficio  */
-
+/* Benefícios */
 .list {
     display: flex;
     gap: 0.25rem;
     transform-style: preserve-3d;
     list-style-type: none;
-  
-    &:hover :not(:hover) {
-      margin: 0 -20px;
-      transform: perspective(500px) rotateY(45deg) scale(0.95);
-    }
-  
-    &:hover :not(:hover)::after {
-      opacity: 0.4;
-    }
-  }
-  
-
+}
 
 .about .about-content,
 .services .serv-content,
-.contact .contact-content{
+.contact .contact-content {
     display: flex;
     flex-direction: wrap;
     align-items: center;
     justify-content: space-between;
 }
 
-.about .title::after{
+.about .title::after {
     content: "";
 }
 
-.about .about-content .left img{
+.about .about-content .left img {
     width: 400px;
     height: 400px;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.about .about-content .right .text{
+.about .about-content .right .text {
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
-.about .about-content .right p{
+.about .about-content .right p {
     text-align: justify;
 }
 
-.about .about-content .right a{
+.about .about-content .right a {
     display: inline-block;
     background: #00804b;
     color: #fff;
@@ -304,48 +263,41 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.about .about-content .right a:hover{
+.about .about-content .right a:hover {
     color: #00804b;
     background: none;
 }
 
-.about .about-content .left{
+.about .about-content .left {
     width: 45%;
 }
 
-.about .about-content .right{
+.about .about-content .right {
     width: 55%;
-} 
+}
 
-
-
-
-
-
-
-/*  Sessão serviços  */
-.services{
+/* Serviços */
+.services {
     background: #ffffff;
     color: #fff;
 }
 
 .services .title::before,
-.contact .title::before{
+.contact .title::before {
     background: #fff;
 }
 
-.services .title::after{
+.services .title::after {
     background: #000000;
-    
 }
 
-.services .serv-content .card .text{
+.services .serv-content .card .text {
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
 
-.services .serv-content .card{
+.services .serv-content .card {
     width: calc(33% - 20px);
     background: #000000;
     text-align: center;
@@ -355,16 +307,16 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.services .serv-content .card .box{
+.services .serv-content .card .box {
     transition: all .3s ease;
 }
 
-.services .serv-content .card i{
+.services .serv-content .card i {
     font-size: 30px;
     color: #00804b;
 }
 
-.services .serv-content .card a{
+.services .serv-content .card a {
     display: inline-block;
     background: #141414;
     color: #fff;
@@ -377,23 +329,17 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.services .serv-content .card a:hover{
+.services .serv-content .card a:hover {
     color: #00804b;
     background: none;
 }
 
-
-
-
-
-
-
-/*  Sessão equipe  */
-.teams .title::after{
+/* Equipe */
+.teams .title::after {
     content: "Equipe";
 }
 
-.teams .carousel .card{
+.teams .carousel .card {
     background: #111;
     color: #fff;
     border-radius: 6px;
@@ -402,11 +348,11 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.teams .carousel .card:hover{
+.teams .carousel .card:hover {
     background: #00804b;
 }
 
-.teams .carousel .card img{
+.teams .carousel .card img {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -415,11 +361,11 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.teams .carousel .card:hover img{
+.teams .carousel .card:hover img {
     border-color: #fff;
 }
 
-.teams .carousel .card .box{
+.teams .carousel .card .box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -427,7 +373,7 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.teams .carousel .card .box .socials{
+.teams .carousel .card .box .socials {
     display: flex;
     justify-content: space-between;
     font-size: 18px;
@@ -435,33 +381,33 @@ section .title::after{
     margin: 10px 0 7px 0;
 }
 
-.teams .carousel .card .box .socials a{
+.teams .carousel .card .box .socials a {
     color: #fff;
 }
 
-.teams .carousel .card:hover .box{
+.teams .carousel .card:hover .box {
     transform: scale(1.05);
 }
 
-.teams .carousel .card .text{
+.teams .carousel .card .text {
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
 
-.teams .carousel .card .box p{
+.teams .carousel .card .box p {
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 300;
     letter-spacing: 2px;
 }
 
-.owl-dots{
+.owl-dots {
     text-align: center;
     margin: 20px;
 }
 
-.owl-dot{
+.owl-dot {
     width: 14px;
     height: 14px;
     outline: none !important;
@@ -470,94 +416,90 @@ section .title::after{
     transition: all .3s ease;
 }
 
-.owl-dot.active{
+.owl-dot.active {
     width: 35px;
     border-radius: 15px;
 }
 
 .owl-dot.active,
-.owl-dot:hover{
+.owl-dot:hover {
     background: #00804b !important;
 }
 
-
-
-
-
-
-
-/*  Sessão contato  */
-.contact{
+/* Contato */
+.contact {
     background-color: #000000;
 }
-.contact .title::after{
+
+.contact .title::after {
     background: #000000;
     content: "Nossos contatos";
 }
+
 .contact .max-width .title {
     background: #000000;
     color: #ffff;
-  
 }
 
-.contact .contact-content .column{
+.contact .contact-content .column {
     width: calc(50% - 30px);
 }
 
-.contact .contact-content{
+.contact .contact-content {
     align-items: flex-start;
 }
 
-.contact .contact-content .left p{
+.contact .contact-content .left p {
     text-align: justify;
 }
 
-.contact .contact-content .text{
+.contact .contact-content .text {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
-.contact .contact-content .left .icons{
+.contact .contact-content .left .icons {
     margin: 10px 0;
 }
 
-.contact .contact-content .row{
+.contact .contact-content .row {
     display: flex;
     height: 65px;
     align-items: center;
 }
 
-.contact .contact-content .row .info{
+.contact .contact-content .row .info {
     color: #ffff;
-    margin-left: 30px
+    margin-left: 30px;
 }
 
-.contact .contact-content .row .info .head{
+.contact .contact-content .row .info .head {
     font-weight: 500;
 }
-.contact .contact-content .row .info .sub-title{
+
+.contact .contact-content .row .info .sub-title {
     color: #a0a0a0;
 }
 
-.contact .contact-content .row i{
+.contact .contact-content .row i {
     font-size: 25px;
     color: #00804b;
 }
 
-.contact .rigth form .fields{
+.contact .rigth form .fields {
     display: flex;
 }
 
 .contact .rigth form .field,
-.contact .rigth form .fields .field{
+.contact .rigth form .fields .field {
     width: 100%;
     height: 45px;
     margin-bottom: 15px;
 }
 
 .contact .rigth form .field input,
-.contact .rigth form .textarea textarea{
+.contact .rigth form .textarea textarea {
     width: 100%;
     height: 100%;
     border: 1px solid #ccc;
@@ -565,33 +507,33 @@ section .title::after{
     outline: none;
     padding: 0 15px;
     font-size: 17px;
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-.contact .rigth form .name{
+.contact .rigth form .name {
     margin-right: 10px;
 }
 
-.contact .rigth form .email{
+.contact .rigth form .email {
     margin-left: 10px;
 }
 
-.contact .rigth form .textarea{
+.contact .rigth form .textarea {
     width: 100%;
     height: 80px;
 }
 
-.contact .rigth form .textarea textarea{
+.contact .rigth form .textarea textarea {
     padding-top: 10px;
     resize: none;
 }
 
-.contact .rigth form .button{
+.contact .rigth form .button {
     width: 170px;
     height: 47px;
 }
 
-.contact .rigth form .button button{
+.contact .rigth form .button button {
     width: 100%;
     height: 100%;
     border: 2px solid #00804b;
@@ -604,38 +546,27 @@ section .title::after{
     transition: all 0.3s ease;
 }
 
-.contact .rigth form .button button:hover{
+.contact .rigth form .button button:hover {
     color: #00804b;
     background: none;
 }
 
-
-
-
-
-
-
-/* sessão footer */
-footer{
+/* Footer */
+footer {
     background: #161616;
     padding: 20px 23px;
     color: #fff;
     text-align: center;
 }
 
-footer span{
+footer span {
     color: #00804b;
     font-weight: 600;
 }
 
-footer span:hover{
+footer span:hover {
     text-decoration: underline;
 }
-
-
-
-
-
 
 /* Geral da seção */
 .about-section {
@@ -662,7 +593,7 @@ footer span:hover{
 
 /* Estilos do texto */
 .about-text {
-    padding-left: 3px; /* Diminuir para aproximar do texto */
+    padding-left: 3px;
     flex: 1;
 }
 
@@ -679,8 +610,7 @@ footer span:hover{
 
 .about-text h2 {
     font-weight: bold;
-    color: #267a34; 
-    
+    color: #267a34;
 }
 
 .about-text p {
@@ -705,10 +635,7 @@ footer span:hover{
     background-color: #00804b;
 }
 
-
-
-
-/*novo teste*/
+/* Novo teste */
 .card-container {
     width: 80%;
     height: 500px;
@@ -735,39 +662,40 @@ footer span:hover{
 }
 
 .cards:nth-child(even) {
-    background-color:aliceblue;
+    background-color: aliceblue;
 }
 
 .cards:nth-child(odd) {
     background-color: #afd4ba;
 }
 
-  .cards{
-    flex: 1;  cursor: pointer;
-  }
-  .cards:hover {
+.cards {
+    flex: 1;
+    cursor: pointer;
+}
+
+.cards:hover {
     flex: 3;
-  }
+}
 
-  .test-homer{
+.test-homer {
     background-color: #ecf8ea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: sans-serif;
-            font-weight: 700;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 700;
+}
 
-  /*ideia*/
-  #faq {
+/* FAQ */
+#faq {
     margin: 20px;
     padding: 20px;
     background-color: aliceblue;
     text-align: center;
 }
-
 
 .faq-item {
     margin-bottom: 20px;
@@ -783,14 +711,14 @@ footer span:hover{
 .faq-answer {
     margin-top: 9px;
     color: #666;
-    display: none; /* Inicialmente, as respostas estão ocultas */
+    display: none;
 }
 
 .faq-item.active .faq-answer {
     display: block;
 }
 
-.btn-nutri-consulta{
+.btn-nutri-consulta {
     display: inline-block;
     font-size: 18px;
     margin-top: 10px;
@@ -805,3 +733,85 @@ footer span:hover{
 .btn-nutri-consulta:hover {
     background-color: #00804b;
 }
+
+/* Media Queries para Responsividade */
+@media (max-width: 1200px) {
+    .max-width {
+        padding: 0 40px;
+    }
+
+    .home .home-content .text-2 {
+        font-size: 60px;
+    }
+
+    .about .about-content .left img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .services .serv-content .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .menu li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .home .home-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home .home-content .text-2 {
+        font-size: 40px;
+    }
+
+    .about .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about .about-content .left,
+    .about .about-content .right {
+        width: 100%;
+    }
+
+    .services .serv-content .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contact .contact-content .column {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .home .home-content .text-1 {
+        font-size: 24px;
+    }
+
+    .home .home-content .text-3 {
+        font-size: 20px;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .about-text p {
+        font-size: 16px;
+    }
+
+    .btn-saiba-mais {
+        padding: 8px 15px;
+    }
+}
+@media (max-width: 320px) {
+    .home .home-content .text-1 {
+        font-size: 20px;
+    }
+} 
